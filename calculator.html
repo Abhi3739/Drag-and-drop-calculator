@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="
+	./Style.css">
+</head>
+<body>
+	<section>
+		<table>
+			<tr>
+				<td><input class="inpHW" type="text" name="" maxlength="1" draggable='false' ondrop="drop1(event)" onchange="showResult()" id="put1"></td>
+				<td><input class="inpHW" ondrop="drop2(event)" type="text" name="" maxlength="1" id="put2"></td>
+				<td><input class="inpHW" ondrop="drop3(event)" type="text" name="" maxlength="1" id="put3"></td>
+				<td><input class="inpHW" type="text" name="" maxlength="3" id="result" ></td>
+			</tr>
+
+			<tr>
+				<td><input class="inpHW" type="text" name="" value='1' disabled="true" dragable='true' ondrag="drag1(event)" ></td>
+				<td><input class="inpHW" type="text" name="" value='2' disabled id="n2" ondrag="drag1(event)"></td>
+				<td><input class="inpHW" type="text" name="" value='3' disabled ondrag="drag1(event)"></td>
+				<td rowspan="2" class="borderHW"><input class="inpHW borderN" type="text" id="plus" value='+' ondrag="drag2(event)" disabled="true"></td>
+			</tr>
+
+			<tr>
+				<td><input class="inpHW" type="text" name="" value='4' disabled="true" ondrag="drag1(event)"></td>
+				<td><input class="inpHW" type="text" name="" value='5' disabled="true" ondrag="drag1(event)"></td>
+				<td><input class="inpHW" type="text" name="" disabled="true" value='6' ondrag="drag1(event)"></td>
+				
+			</tr>
+
+			<tr>
+				<td><input class="inpHW" type="text" name="" value="7" disabled="true" ondrag="drag1(event)"></td>
+				<td><input class="inpHW" type="text" name="" value="8" disabled="true" ondrag="drag1(event)"></td>
+				<td><input class="inpHW" type="text" name="" value="9" disabled="true" ondrag="drag1(event)"></td>
+				<td rowspan="2" class="borderHW"><input class="inpHW borderN" type="text" id="minus" value="-" disabled="true" ondrag="drag2(event)"></td>
+			</tr>
+
+			<tr>
+				<td><input class="inpHW" type="text" name="" value="0" disabled="true" ondrag="drag1(event)"></td>
+				<td colspan="2" class="borderHW"><input class="inpHW borderN" type="text" name="" value="clear"></td>
+				
+				
+			</tr>
+		</table>
+	</section>
+	<script type="text/javascript">
+		function drop1(element) {
+			element.preventDefault()
+			var data = event.dataTransfer.getData("Text");
+			document.getElementById('put1').value=data;
+			//console.log(v1);
+			//alert(data)
+			// alert(document.getElementsByClassName("inpHW")[data].value)
+			// body...
+		}
+
+		function drop2(element) {
+			element.preventDefault()
+			var data = event.dataTransfer.getData("Text");
+			 if(data =='+' || data =='-')
+             document.getElementById('put2').value=data;
+		
+			//console.log(v1);
+			//alert(data)
+			// alert(document.getElementsByClassName("inpHW")[data].value)
+			// body...
+		}
+
+		function drop3(element) {
+			element.preventDefault()
+			var data = event.dataTransfer.getData("Text");
+			 document.getElementById('put3').value=data;
+			 
+			//alert(data)
+			// alert(document.getElementsByClassName("inpHW")[data].value)
+			// body...
+		}
+		function drag1(event){
+        event.dataTransfer.setData("Text", event.target.id);
+		}
+		function drag2(event){
+		event.dataTransfer.setData("Oprat", event.target.id);
+		}
+
+
+		function showResult(){
+			var a=document.getElementById('put1').value;
+			var b=document.getElementById('put2').value;
+			var c=document.getElementById('put3').value;
+			 a=parseInt(a);
+			 c=parseInt(c);
+			
+
+
+			if(a!=''|| a!='undefined' && b!=''|| b!='undefined' && c!=''|| c!='undefined'){
+				
+				if(b=='+')
+				document.getElementById('result').value= (a+c).valueOf();
+				if(b=='-')
+					document.getElementById('result').value= (a-c);
+			}
+			
+		}
+
+	</script>
+
+</body>
+</html>
